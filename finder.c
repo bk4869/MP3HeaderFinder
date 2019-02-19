@@ -53,14 +53,14 @@ int main( int argc, char ** argv )
 		//Is MP3 Layer 3
 		if(isL3() != 0){
 			printf("It's a MPEG Layer 3 file\n");
+			//Call method to show file details
+			bitRate();
+			findSampRate();
+			copyRight();
+
 		}else{
 			printf("It's NOT a MPEG Layer 3 file\n");
 		}
-
-		//Call method to show file details
-		bitRate();
-		findSampRate();
-		copyRight();
 
 		break;
 		
@@ -154,6 +154,7 @@ void findSampRate(){
 	printf("The Sample Rates is %d Hz\n", sampleRate[j]);
 }
 
+//CopyRight and Original Finder
 void copyRight(){
 	char cr = (unsigned)data[header+3] & 0xf;
 	char firstTwoBits = cr >> 2;
